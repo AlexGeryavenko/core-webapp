@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Alex Geryavenko">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/admin.css" rel="stylesheet">
+
+    <title>The admin page!</title>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Company</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary" href="/admin">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+
+    <!-- Custom content begin -->
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <p class="h3 text-left">Change Logs:</p>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col" class="text-left">Version</th>
+                <th scope="col" class="text-left">Tag</th>
+                <th scope="col" class="text-left">Upload time</th>
+                <th scope="col" class="text-left">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" class="text-left">0.0.3</th>
+                <td class="text-left"></td>
+                <td class="text-left">July 20, 2018 at 12:17:22 PM UTC+3</td>
+                <td class="text-left">bugfix #2219 "JS error on staff page"</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-left">0.0.2</th>
+                <td class="text-left"></td>
+                <td class="text-left">July 15, 2018 at 12:17:22 PM UTC+3</td>
+                <td class="text-left">minor updates in UI</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-left">0.0.1-alpha</th>
+                <td class="text-left">alpha_release</td>
+                <td class="text-left">July 11, 2018 at 12:17:22 PM UTC+3</td>
+                <td class="text-left">initial version release with: 1, 2, 3...</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="custom-file float-right">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Upload new version...</label>
+        </div>
+
+
+        <div class="custom-file float-right">
+            <form action="/s3/uploadFile" method="post" enctype="multipart/form-data">
+                <input type="file" id="newVersion">
+                <button type="submit">Upload new version</button>
+            </form>
+        </div>
+
+
+
+    </div>
+    <!-- Custom content end -->
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Optional JavaScript -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
