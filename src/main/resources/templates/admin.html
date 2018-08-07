@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="/css/admin.css" rel="stylesheet">
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
 
     <title>The admin page!</title>
 </head>
@@ -62,42 +62,39 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row" class="text-left">0.0.3</th>
-                <td class="text-left"></td>
-                <td class="text-left">July 20, 2018 at 12:17:22 PM UTC+3</td>
-                <td class="text-left">bugfix #2219 "JS error on staff page"</td>
+
+            <!-- List of releases begin -->
+            <tr th:each="uploadedRelease : ${uploadedReleaseList}">
+                <th scope="row" class="text-left" th:text="${uploadedRelease.version}"> 0.0.1 </th>
+                <td class="text-left" th:text="${uploadedRelease.gitTag}"> alpha_release </td>
+                <td class="text-left" th:text="${uploadedRelease.uploadTime}"> July 11, 2018 at 12:17:22 PM UTC+3 </td>
+                <td class="text-left" th:text="${uploadedRelease.description}"> initial version release with: 1, 2, 3... </td>
             </tr>
-            <tr>
-                <th scope="row" class="text-left">0.0.2</th>
-                <td class="text-left"></td>
-                <td class="text-left">July 15, 2018 at 12:17:22 PM UTC+3</td>
-                <td class="text-left">minor updates in UI</td>
-            </tr>
-            <tr>
-                <th scope="row" class="text-left">0.0.1-alpha</th>
-                <td class="text-left">alpha_release</td>
-                <td class="text-left">July 11, 2018 at 12:17:22 PM UTC+3</td>
-                <td class="text-left">initial version release with: 1, 2, 3...</td>
-            </tr>
+            <!-- List of releases end -->
+
             </tbody>
         </table>
-
-        <div class="custom-file float-right">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Upload new version...</label>
-        </div>
-
-
-        <div class="custom-file float-right">
-            <form action="/s3/uploadFile" method="post" enctype="multipart/form-data">
-                <input type="file" id="newVersion">
-                <button type="submit">Upload new version</button>
+    </div>
+    <div class="border clearfix">
+        <!-- Upload form begin -->
+        <div class="upload-area">
+            <form class="form-inline float-right upload-form" action="/s3/uploadFile" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="descriptionArea">Release description:</label>
+                    <textarea class="form-control" id="descriptionArea" name="description" rows="3"></textarea>
+                </div>
+                <div class="custom-file">
+                    <input id="uploadNewRelease" type="file" class="custom-file-input" name="file">
+                    <label for="uploadNewRelease" class="custom-file-label text-truncate">Select new version...</label>
+                </div>
+                <button type="submit" class="btn btn-outline-primary submit-upload-form">Upload</button>
             </form>
         </div>
 
-
-
+        <div class="progress">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+        <!-- Upload form end -->
     </div>
     <!-- Custom content end -->
 
@@ -127,17 +124,17 @@
     </footer>
 </div>
 
-<!-- Optional JavaScript -->
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script type="text/javascript" th:src="@{/js/admin.js}"></script>
+
 </body>
 </html>
