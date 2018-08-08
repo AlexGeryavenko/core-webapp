@@ -9,11 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 import my.example.core.webapp.corewebapp.managers.AmazonS3Manager;
 
 @Controller
-public class S3Controller {
+public class UploadController {
 
-    AmazonS3Manager amazonS3Manager;
+    private AmazonS3Manager amazonS3Manager;
 
-    S3Controller(AmazonS3Manager amazonS3Manager) {
+    UploadController(AmazonS3Manager amazonS3Manager) {
         this.amazonS3Manager = amazonS3Manager;
     }
 

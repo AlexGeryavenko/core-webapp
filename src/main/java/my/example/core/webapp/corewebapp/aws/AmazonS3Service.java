@@ -2,11 +2,12 @@ package my.example.core.webapp.corewebapp.aws;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.GetObjectMetadataRequest;
 import com.amazonaws.services.s3.model.GetObjectTaggingRequest;
 import com.amazonaws.services.s3.model.GetObjectTaggingResult;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
@@ -15,14 +16,12 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.model.Tag;
 
-import org.springframework.stereotype.Service;
-
 @Service
 public class AmazonS3Service {
 
     private final AmazonS3 amazonS3;
 
-    public AmazonS3Service() {
+    AmazonS3Service() {
         amazonS3 = AmazonS3ClientBuilder
                 .standard()
                 .withCredentials(new DefaultAWSCredentialsProviderChain())
